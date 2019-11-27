@@ -1,0 +1,19 @@
+{
+  "name": "search_cep_brazil",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "puppeteer": "^2.0.0",
+    "puppeteer-extra": "^2.1.6",
+    "puppeteer-extra-plugin-stealth": "^2.2.5",
+    "readline-sync": "^1.4.10"
+  }
+}
