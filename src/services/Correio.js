@@ -7,9 +7,7 @@ import cheerio from 'cheerio';
 puppeteer.use(pluginStealth());
 
 export default async ({ cep }) => {
-  if(cep.length < 8){
-    return {error:"Formato de cep invalido"}
-  }
+  console.log(cep)
   const args = [
     '--no-sandbox',
     '--disable-setuid-sandbox',
@@ -47,14 +45,14 @@ export default async ({ cep }) => {
   const $ = cheerio.load(content);
   await page.waitForNavigation().catch(()=>{return {error:"Cep nao encontrado"}})
 
-  const objt = [];
+  let objt = {};
 
   $(
     'body > div.back > div.tabs > div:nth-child(2) > div > div > div.column2 > div.content > div.ctrlcontent > table > tbody > tr'
   )
     .next()
     .each((_, tr) => {
-      objt.push({
+      objt = {
         rua: $(tr)
           .find('td')
           .eq(0)
@@ -67,11 +65,8 @@ export default async ({ cep }) => {
           .find('td')
           .eq(2)
           .text(),
-        cep: $(tr)
-          .find('td')
-          .eq(3)
-          .text(),
-      });
+        cep: cep,
+      }
     });
 
   await browser.close();
