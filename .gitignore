@@ -1,4 +1,2 @@
-node_modules
-.env
-printscreens/*
-tmp
+node_modules/
+tmp/
