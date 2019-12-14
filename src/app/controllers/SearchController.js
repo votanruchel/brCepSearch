@@ -8,7 +8,7 @@ class SearchController {
   
     const address = await Correio(req.params);
 
-    if (address.length === 0) {
+    if (!address.hasOwnProperty('cep')) {
       return res.status(400).json({ error: 'Cep não localizado!' });
     }
     if(address.hasOwnProperty('error')){
