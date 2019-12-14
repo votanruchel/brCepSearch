@@ -8,7 +8,11 @@ const cep = new mongoose.Schema(
         },
         rua: String,
         bairro: String,
-        cidade: String
+        cidade: String,
+        add_at:{
+            type:Date,
+            default:Date.now()
+        }
     }
     );
 module.exports = mongoose.model('Cep',cep);
